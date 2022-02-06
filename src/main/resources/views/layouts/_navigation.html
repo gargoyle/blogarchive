@@ -1,0 +1,29 @@
+<nav class="navbar fixed-top navbar-expand-lg <#if !(hero.title!?length > 0)>dark</#if>" id="siteNav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">                
+        <ul class="navbar-nav mr-auto" style="">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://twitter.com/${global.twitterHandle}"><i class="fab fa-twitter"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="https://github.com/gargoyle"><i class="fab fa-github"></i></a></li>
+        </ul>
+        
+        <ul class="navbar-nav ml-auto" style="">
+            <li class="nav-item">
+                <a class="nav-link" href="/fulllist"><i class="fa fa-list"></i></a>
+            </li>
+            <li class="nav-item">
+                <#if article??>
+                    <a class="nav-link" href="/article/${article.slug}/edit"><i class="fa fa-pencil-alt"></i></a>
+                <#else>
+                    <a class="nav-link" href="/createarticle"><i class="fa fa-pencil-alt"></i></a>
+                </#if>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" title="Stats by Plausible.io" href="https://plausible.io/paulcourt.co.uk"><i class="fa fa-chart-bar"></i></a>
+            </li>
+        </ul>
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="color: white"><i class="material-icons">menu</i></span>
+    </button>
+</nav>

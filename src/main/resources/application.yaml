@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  host: 0.0.0.0
+
+db:
+    source: "jdbc"
+    connection: 
+        url: "jdbc:mysql://localhost:3306/blog2"
+        username: "root"
+        password: ""
+    statements:
+        ping: "DO 0"
+        select-all-articles: "SELECT * FROM articles ORDER BY createdAt DESC"
+        select-published-articles: "SELECT * FROM articles WHERE publishedAt IS NOT NULL ORDER BY publishedAt DESC"
+        get-article-by-slug: "SELECT * FROM articles WHERE slug = ? LIMIT 1"
+        save-new-article: "INSERT INTO articles (id, createdAt, publishedAt, lastUpdatedAt, openGraphImageUrl, openGraphSummary, title, heroImageUrl, slug, summary, body, tags) VALUES (:id, :createdAt, :publishedAt, :lastUpdatedAt, :openGraphImageUrl, :openGraphSummary, :title, :heroImageUrl, :slug, :summary, :body, :tags)"
+        save-existing-article: "UPDATE articles SET publishedAt = :publishedAt, lastUpdatedAt = :lastUpdatedAt, openGraphImageUrl = :openGraphImageUrl, openGraphSummary = :openGraphSummary, title = :title, heroImageUrl = :heroImageUrl, slug = :slug, summary = :summary, body = :body, tags = :tags WHERE id = :id"
+
+security:
+    config:
+        require-encryption: false
+    providers:
+        - http-basic-auth:
+            realm: "adminonly"
+            users:
+                - login: ""
+                  password: ""
+                  roles: ["user","admin"]

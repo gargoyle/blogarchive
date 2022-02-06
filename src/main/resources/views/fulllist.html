@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12 col-md-8">
+
+        <#list articleList as item>
+
+        <div class="articleListItem <#if item.published>published<#else>notPublished</#if>">
+            <h2 class="text-center mb-3">
+                <a href="/article/${item.slug}">${item.title}</a>
+            </h2>
+        </div>
+        <hr>
+        </#list>
+    </div>
+
+    <div class="col-sm-12 col-md-4">
+        <p>
+            This is the full list of articles.
+        </p>
+    </div>
+</div>  

@@ -1,0 +1,44 @@
+<#import "components/forms.html" as f>
+<form method="POST">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h1>Edit Article</h1>
+
+            <@f.textInput id="title" label="Title" name="title" value=article.title/>
+
+            <@f.textInput id="heroImageUrl" label="Hero Image URL" name="heroImageUrl" value=article.heroImageUrl/>
+
+            <@f.textArea id="body" label="Body" name="body" value=article.body/>
+
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h1>&nbsp;</h1>
+
+            <@f.textInput id="slug" label="Slug" name="slug" value=article.slug/>
+
+            <@f.textInput id="openGraphImageUrl" label="OG Image URL" name="openGraphImageUrl" value=article.openGraphImageUrl/>
+            
+            <@f.textArea id="openGraphSummary" label="OG Summary" name="openGraphSummary" value=article.openGraphSummary rows=3/>
+
+            <@f.textArea id="summary" label="Normal Summary" name="summary" value=article.summary rows=8/>
+
+            <@f.textInput id="tags" label="Tags" name="tags" value=article.tags?join(", ")/>
+
+            <@f.checkBox id="published" name="published" label="Published?" checkedValue=1 isChecked=article.published />
+
+            <hr/>
+
+            <@f.submitCancelBtns id="editArticleSubmit" cancelUrl="/article/" + article.slug/>
+        </div>
+    </div>  
+</form>
+<script>
+    $(document).ready(function () {
+        var articleMde = new SimpleMDE({
+            autoDownloadFontAwesome: false,
+            spellChecker: false,
+            element: document.getElementById("body")
+        });
+    });
+</script>

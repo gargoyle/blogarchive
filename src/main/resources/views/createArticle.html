@@ -1,0 +1,44 @@
+<#import "components/forms.html" as f>
+<form method="POST">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h1>Create Article</h1>
+
+            <@f.textInput id="title" label="Title" name="title" value="" />
+
+            <@f.textInput id="heroImageUrl" label="Hero Image URL" name="heroImageUrl" value="" />
+
+            <@f.textArea id="body" label="Body" name="body" value="" />
+
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <h1>&nbsp;</h1>
+
+            <@f.textInput id="slug" label="Slug" name="slug" value="" />
+
+            <@f.textInput id="openGraphImageUrl" label="OG Image URL" name="openGraphImageUrl" value="" />
+            
+            <@f.textArea id="openGraphSummary" label="OG Summary" name="openGraphSummary" value="" rows=3 />
+
+            <@f.textArea id="summary" label="Normal Summary" name="summary" value="" rows=8 />
+
+            <@f.textInput id="tags" label="Tags" name="tags" value="" />
+
+            <@f.checkBox id="published" name="published" label="Published?" checkedValue=1 isChecked=false />
+
+            <hr/>
+
+            <@f.submitCancelBtns id="editArticleSubmit" cancelUrl="/" />
+        </div>
+    </div>  
+</form>
+<script>
+    $(document).ready(function () {
+        var articleMde = new SimpleMDE({
+            autoDownloadFontAwesome: false,
+            spellChecker: false,
+            element: document.getElementById("body")
+        });
+    });
+</script>

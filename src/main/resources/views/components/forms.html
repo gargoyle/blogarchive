@@ -1,0 +1,68 @@
+<#macro textArea id label name rows=5 value='' required=false placeholder='' help=''>
+<div class="form-group">
+    <label for="${id}">${label}</label>
+    <textarea 
+        class="form-control"
+        rows="${rows}"
+        id="${id}" 
+        name="${name}" 
+        aria-describedby="${id}Help" 
+        placeholder="${placeholder}"
+        <#if required>required</#if>
+    />${value}</textarea>
+    <small id="${id}Help" class="form-text text-muted">${help}</small>
+</div>
+</#macro>
+
+<#macro textInput id name label="" prefix=false type="text" value='' placeholder='' required=false help=''>
+<div class="form-group">
+    <#if label != "">
+        <label for="${id}">${label}</label>
+    </#if>
+    <div class="input-group">
+        <#if prefix>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">${prefix}</span>
+            </div>
+        </#if>
+        <input 
+            class="form-control" 
+            id="${id}" 
+            type="${type}" 
+            name="${name}" 
+            aria-describedby="${id}Help" 
+            value="${value}"
+            placeholder="${placeholder}"
+            <#if required>required</#if>
+            />
+    </div>
+    <small id="${id}Help" class="form-text text-muted">${help}</small>
+</div>
+</#macro>
+
+<#macro checkBox id name checkedValue isChecked=false label="">
+<div class="form-check">
+  <input class="form-check-input" 
+         type="checkbox" 
+         value="${checkedValue}" 
+         id="${id}"
+         name="${name}"
+         <#if isChecked>checked="checked"</#if>/>
+  <label class="form-check-label" for="${id}">
+    ${label}
+  </label>
+</div>
+</#macro>
+
+<#macro submitCancelBtns id fbJustify="between" cancelUrl="" cancelText="Cancel" buttonType="primary" submitText="Save Changes">
+<div class="d-flex justify-content-${fbJustify} align-items-center submitCancelControl">
+    <#if (cancelUrl!?length > 0)>
+        <div class="cancelControl">
+            <a href="${cancelUrl}" class="btn btn-secondary">${cancelText}</a>
+        </div>
+    </#if>
+    <button class="btn btn-${buttonType} submitControl" type="submit" id="${id}">
+        ${submitText}
+    </button>
+</div>
+</#macro>

@@ -1,0 +1,7 @@
+# All access granted (well, its the default anyway)
+User-agent: *
+Disallow: /createarticle
+Disallow: /fulllist
+Allow: /
+
+Sitemap: http://www.paulcourt.co.uk/sitemap.xml

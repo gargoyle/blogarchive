@@ -1,0 +1,67 @@
+<div class="row articleView">
+    <div class="col-sm-12 text-center articleIntro">
+        <#if !article.isPublished()>
+        <div class="alert alert-warning">
+            <h2>Warning: This article has not been published!</h2>
+            <p>
+                You are viewing a work-in-progress which is most likely incomplete,
+                may contain errors and incorrect or out-of-date information.
+            </p>
+        </div>
+        </#if>
+        
+        
+        
+        <h1>${article.title}</h1>
+        <p class="summary">${article.summary}</p>
+    </div>
+    
+    <div class="col-sm-12 col-md-8">
+        
+        <article>
+            ${parsedBody}
+        </article>
+
+    </div>
+
+    <div class="col-sm-12 col-md-4 sidebar">
+        <div class="articleMetaItem">
+            <span class="label">This article is:</span>
+            <span class="value big">${article.daysSincePublished()}</span>
+            <span class="tagline">days old</span>
+        </div>
+        
+        <div class="articleMetaItem">
+            <span class="label">Was published on:</span>
+            <#if article.isPublished()>
+            <span class="value">${article.getPublishedDate().toString()?datetime?string('EEEE, d MMM yyyy')}</span>
+            <#else>
+            <span class="value warning">NOT YET PUBLISHED</span>
+            </#if>
+        </div>
+        
+        <div class="articleMetaItem">
+            <span class="label">Was last updated on:</span>
+            <span class="value">${article.getLastUpdated().toString()?datetime?string('EEEE, d MMM yyyy')}</span>
+        </div>
+        
+        
+        <div class="articleMetaItem">
+            <span class="label">was created on:</span>
+            <span class="value">${article.getCreated().toString()?datetime?string('EEEE, d MMM yyyy')}</span>
+        </div>
+        
+        <div class="articleMetaItem">
+            <span class="label">It took about:</span>
+            <span class="value big">${article.daysToWrite()}</span>
+            <span class="tagline">days to write</span>
+        </div>
+        
+        <div class="articleMetaItem">
+            <span class="label">Is tagged with:</span>
+            <span class="value big">${article.tags?join(", ")}</span>
+        </div>
+        
+        <hr>
+    </div>
+</div>  
